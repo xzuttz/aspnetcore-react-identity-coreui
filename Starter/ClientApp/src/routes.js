@@ -29,6 +29,10 @@ const Progress = React.lazy(() => import("./views/base/progress/Progress"));
 const Spinners = React.lazy(() => import("./views/base/spinners/Spinners"));
 const Tables = React.lazy(() => import("./views/base/tables/Tables"));
 const Tooltips = React.lazy(() => import("./views/base/tooltips/Tooltips"));
+const Login = React.lazy(() => import("./views/pages/login/Login"));
+const Register = React.lazy(() => import("./views/pages/register/Register"));
+const Page404 = React.lazy(() => import("./views/pages/page404/Page404"));
+const Page500 = React.lazy(() => import("./views/pages/page500/Page500"));
 
 // Buttons
 const Buttons = React.lazy(() => import("./views/buttons/buttons/Buttons"));
@@ -141,6 +145,10 @@ const routes = [
     { path: "/dashboard/notifications/modals", name: "Modals", element: Modals },
     { path: "/dashboard/notifications/toasts", name: "Toasts", element: Toasts },
     { path: "/dashboard/widgets", name: "Widgets", element: Widgets },
+    { path: "/dashboard/login", name: "Login", element: Login },
+    { path: "/dashboard/register", name: "Register", element: Register },
+    { path: "/dashboard/404", name: "Error 404", element: Page404 },
+    { path: "/dashboard/500", name: "Error 500", element: Page500 },
 ];
 
 export default routes;

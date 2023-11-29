@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { userRegister } from "src/redux/actions/AuthActions";
+//import { userRegister } from "src/redux/actions/AuthActions";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 
@@ -44,12 +44,12 @@ const Register = () => {
           email,
           password,
         };
-        userRegister(userItem)
-          .then(() => {
-            toastr.success("Successfuly Registered.");
-            navigate("/");
-          })
-          .catch((err) => setError(err));
+        //userRegister(userItem)
+        //  .then(() => {
+        //    toastr.success("Successfuly Registered.");
+        //    navigate("/");
+        //  })
+        //  .catch((err) => setError(err));
       }
     }
   };

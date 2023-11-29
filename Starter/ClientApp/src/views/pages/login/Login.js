@@ -21,7 +21,7 @@ import 'toastr/build/toastr.min.css'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { userLogin } from '../../../redux/actions/AuthActions'
+//import { userLogin } from '../../../redux/actions/AuthActions'
 const Login = () => {
   const auth = useSelector((state) => state.auth)
   const navigate = useNavigate()
@@ -50,11 +50,11 @@ const Login = () => {
         email,
         password,
       }
-      dispatch(userLogin(userItem))
-        .then(() => {
-          navigate('/dashboard')
-        })
-        .catch((err) => setError(err))
+      //dispatch(userLogin(userItem))
+      //  .then(() => {
+      //    navigate('/dashboard')
+      //  })
+      //  .catch((err) => setError(err))
     }
   }
 

@@ -63,7 +63,49 @@ const Dashboard = () => {
   }, []);
 
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
-
+    const columns = [
+        {
+            key: 'id',
+            label: '#',
+            _props: { scope: 'col' },
+        },
+        {
+            key: 'class',
+            _props: { scope: 'col' },
+        },
+        {
+            key: 'heading_1',
+            label: 'Heading',
+            _props: { scope: 'col' },
+        },
+        {
+            key: 'heading_2',
+            label: 'Heading',
+            _props: { scope: 'col' },
+        },
+    ]
+    const items = [
+        {
+            id: 1,
+            class: 'Mark',
+            heading_1: 'Otto',
+            heading_2: '@mdo',
+            _cellProps: { id: { scope: 'row' } },
+        },
+        {
+            id: 2,
+            class: 'Jacob',
+            heading_1: 'Thornton',
+            heading_2: '@fat',
+            _cellProps: { id: { scope: 'row' } },
+        },
+        {
+            id: 3,
+            class: 'Larry the Bird',
+            heading_2: '@twitter',
+            _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
+        },
+    ]
   const progressExample = [
     { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
     { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
@@ -474,7 +516,18 @@ const Dashboard = () => {
             </CCardBody>
           </CCard>
         </CCol>
-      </CRow>
+          </CRow>
+
+          <CRow>
+              <CCol xs>
+                  <CCard className="mb-4">
+                      <CCardHeader> Data table bind</CCardHeader>
+                      <CCardBody>
+                          <CTable columns={columns} items={items} />
+                      </CCardBody>
+                  </CCard>
+              </CCol>
+          </CRow>
     </>
   );
 

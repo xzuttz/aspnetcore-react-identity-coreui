@@ -3,6 +3,7 @@ import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from '
 import { Link } from 'react-router-dom';
 import LoginMenu from './api-authorization/LoginMenu';
 import './NavMenu.css';
+import routes from '../routes'
 
 export class NavMenu extends Component {
     static displayName = NavMenu.name;
@@ -24,8 +25,10 @@ export class NavMenu extends Component {
 
     render() {
         const pathName = window.location.pathname;
+        const pageNotFound = routes.find(a => a.path === pathName)
+            
         return (
-            <div>{!(pathName.includes("/dashboard")) &&
+            <div>{!(pathName.includes("/dashboard") || !pageNotFound)  &&
                 <header>
                     <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
                         <NavbarBrand tag={Link} to="/">Starter</NavbarBrand>

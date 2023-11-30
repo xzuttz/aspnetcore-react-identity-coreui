@@ -14,15 +14,17 @@ import 'simplebar/dist/simplebar.min.css'
 import { useLocation } from 'react-router-dom'
 // sidebar nav config
 import navigation from '../_nav'
+import routes from '../routes'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.side.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.side.sidebarShow)
     const { pathname } = useLocation();
+    const pageNotFound = routes.find(a => a.path === pathname)
     return (
         <>
-            {!(pathname.includes("/login") || pathname.includes("/register") || pathname.includes("/404") || pathname.includes("/500")) &&
+            {!(pathname.includes("/login") || pathname.includes("/register") || pathname.includes("/404") || pathname.includes("/500") || !pageNotFound) &&
      <CSidebar
                     position="fixed"
                     unfoldable={unfoldable}

@@ -17,16 +17,19 @@ import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from '@coreui/icons'
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header/index'
 import { logo } from 'src/assets/brand/logo' 
+import routes from '../routes'
 
 
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.side.sidebarShow)
     const { pathname } = useLocation();
+    const pageNotFound = routes.find(a => a.path === pathname)
+
     //console.log(pathname);
     return (
       <div>
-            {!(pathname.includes("/login") || pathname.includes("/register") || pathname.includes("/404") || pathname.includes("/500")) &&
+            {!(pathname.includes("/login") || pathname.includes("/register") || pathname.includes("/404") || pathname.includes("/500") || !pageNotFound) &&
 
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>

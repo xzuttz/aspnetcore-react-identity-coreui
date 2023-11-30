@@ -41,7 +41,7 @@ import {
 } from "@coreui/react";
 import { CChartLine } from "@coreui/react-chartjs";
 import { getStyle, hexToRgba } from "@coreui/utils";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import avatar1 from "src/assets/images/avatars/1.jpg";
 import avatar2 from "src/assets/images/avatars/2.jpg";
@@ -62,7 +62,61 @@ const Dashboard = () => {
     confirmAuth();
   }, []);
 
-  const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+    const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+
+    const handleDeleteRow = (e) => {
+        console.log(items)
+        // Logic to delete row with rowIdToDelete from tableData
+        // For example:
+        const rowIdToDelete = e.target.parentElement.parentElement.rowIndex
+        const updatedTableData = items.filter(row => row.id !== rowIdToDelete);
+        const updatedTableWithNewIds = updatedTableData.map((row, index) => ({
+            ...row,
+            id: index + 1, // Assuming IDs start from 1 and are consecutive
+        }));
+        setTableData(updatedTableWithNewIds);
+        items.pop(rowIdToDelete)
+        console.log(items)
+
+    }
+
+
+    const [items, setTableData] = useState([
+        {
+            id: 1,
+            class: 'Mark',
+            heading_1: 'Otto',
+            heading_2: '@mdo',
+            remove: <CButton
+                onClick={handleDeleteRow}>
+                Remove
+            </CButton>,
+            _cellProps: { id: { scope: 'row' } },
+        },
+        {
+            id: 2,
+            class: 'Jacob',
+            heading_1: 'Thornton',
+            heading_2: '@fat',
+            remove: <CButton
+
+                onClick={handleDeleteRow}>
+                Remove
+            </CButton>,
+            _cellProps: { id: { scope: 'row' } },
+        },
+        {
+            id: 3,
+            class: 'Larry the Bird',
+            heading_2: '@twitter',
+            remove: <CButton
+                onClick={handleDeleteRow}>
+                Remove
+            </CButton>,
+            _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
+        },
+    ]);
+
     const columns = [
         {
             key: 'id',
@@ -82,30 +136,12 @@ const Dashboard = () => {
             key: 'heading_2',
             label: 'Heading',
             _props: { scope: 'col' },
+        },{
+            key: 'remove',
+            label: 'Remove',
+            _props: { scope: 'col' },
         },
-    ]
-    const items = [
-        {
-            id: 1,
-            class: 'Mark',
-            heading_1: 'Otto',
-            heading_2: '@mdo',
-            _cellProps: { id: { scope: 'row' } },
-        },
-        {
-            id: 2,
-            class: 'Jacob',
-            heading_1: 'Thornton',
-            heading_2: '@fat',
-            _cellProps: { id: { scope: 'row' } },
-        },
-        {
-            id: 3,
-            class: 'Larry the Bird',
-            heading_2: '@twitter',
-            _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
-        },
-    ]
+    ] 
   const progressExample = [
     { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
     { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },

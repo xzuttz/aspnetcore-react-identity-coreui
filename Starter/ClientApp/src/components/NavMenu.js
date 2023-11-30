@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LoginMenu from './api-authorization/LoginMenu';
 import './NavMenu.css';
 import routes from '../routes'
+import { v8IntrinsicIdentifier } from '@babel/types';
 
 export class NavMenu extends Component {
     static displayName = NavMenu.name;
@@ -25,11 +26,15 @@ export class NavMenu extends Component {
 
     render() {
         const pathName = window.location.pathname;
-        const pageNotFound = routes.find(a => a.path === pathName) 
-         
+        //const pageNotFound = routes.find(a => a.path === pathName)
+        var arr = [
+           "", "home", "counter", "fetch-data", "dashboard"
+        ]
+        
+
         return (
             <div>
-                {!(pathName.includes("/dashboard") || pathName.split('/')[1] !== '') &&
+                {!(pathName.includes("/dashboard") || !arr.includes(pathName.split('/')[1].toLocaleLowerCase())) &&
                     <header>
                         <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
                             <NavbarBrand tag={Link} to="/">Starter</NavbarBrand>

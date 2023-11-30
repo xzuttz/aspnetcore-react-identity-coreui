@@ -28,7 +28,7 @@ export class NavMenu extends Component {
         const pathName = window.location.pathname;
         //const pageNotFound = routes.find(a => a.path === pathName)
         var arr = [
-           "", "home", "counter", "fetch-data", "dashboard"
+           "", "counter", "fetch-data", "dashboard"
         ]
         
 

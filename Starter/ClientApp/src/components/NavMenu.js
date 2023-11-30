@@ -25,36 +25,38 @@ export class NavMenu extends Component {
 
     render() {
         const pathName = window.location.pathname;
-        const pageNotFound = routes.find(a => a.path === pathName)
-            
+        const pageNotFound = routes.find(a => a.path === pathName) 
+         
         return (
-            <div>{!(pathName.includes("/dashboard") || !pageNotFound)  &&
-                <header>
-                    <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
-                        <NavbarBrand tag={Link} to="/">Starter</NavbarBrand>
-                        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-                        <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-                            <ul className="navbar-nav flex-grow">
-                                <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/dashboard">Dashboard</NavLink>
-                                </NavItem>
-                                <LoginMenu>
-                                </LoginMenu>
-                            </ul>
-                        </Collapse>
-                    </Navbar>
-                </header>
+            <div>
+                {!(pathName.includes("/dashboard") || pathName.split('/')[1] !== '') &&
+                    <header>
+                        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
+                            <NavbarBrand tag={Link} to="/">Starter</NavbarBrand>
+                            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+                            <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
+                                <ul className="navbar-nav flex-grow">
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-dark" to="/dashboard">Dashboard</NavLink>
+                                    </NavItem>
+                                    <LoginMenu>
+                                    </LoginMenu>
+                                </ul>
+                            </Collapse>
+                        </Navbar>
+                    </header>
 
-            }</div>
+                }</div>
         );
+
     }
 }

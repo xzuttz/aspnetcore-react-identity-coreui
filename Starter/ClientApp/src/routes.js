@@ -149,7 +149,7 @@ const routes = [
     { path: "/dashboard/register", name: "Register", element: Register },
     { path: "/dashboard/404", name: "Error 404", element: Page404 },
     { path: "/dashboard/500", name: "Error 500", element: Page500 },
-    { path: "*", name: "Error 404", element: Page404 },
+    { path: "dashboard/*", name: "Error 404", element: Page404 },
 ];
 
 export default routes;

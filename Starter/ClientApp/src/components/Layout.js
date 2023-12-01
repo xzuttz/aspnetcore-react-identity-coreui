@@ -9,7 +9,9 @@ const Layout = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const currentURL = window.location.href; // returns the absolute URL of a page
-
+    var pages = [
+        "", "counter", "fetch-data", "dashboard","authentication"
+    ]
     // const pathname = window.location.pathname;
     const { pathname } = useLocation();
     useEffect(() => {
@@ -41,7 +43,8 @@ const Layout = ({ children }) => {
                 pathname === "/counter" ||
                 pathname === "/fetch-data" ||
                 pathname === "/authentication/profile" ||
-                pathname === "/"
+                pathname === "/" ||
+                !pages.includes(pathname.split('/')[1].toLocaleLowerCase())
             ) &&
                 isAuthenticated)
                 // ||

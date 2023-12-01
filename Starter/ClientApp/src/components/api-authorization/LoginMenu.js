@@ -36,7 +36,7 @@ const LoginMenu = () => {
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink replace tag={Link} className="text-dark" to={logoutPath} state={logoutState}>
+          <NavLink tag={Link} className="text-dark" to={logoutPath} state={logoutState}>
             Logout
           </NavLink>
         </NavItem>
